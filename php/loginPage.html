@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>User Page</title>
+        <link rel="stylesheet" href="css/welcome.css">
+    </head>
+
+    <style>
+    .content {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .button {
+      background-color: DodgerBlue;
+      border-radius: 20%;
+      border: 2px solid #000000;
+    }
+
+    .display{
+      border: 2px solid #000000;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .button1 {
+      text-align: center;
+      background-color: DodgerBlue;
+      border-radius: 20%;
+      border: 2px solid #000000;
+    }
+
+    </style>
+
+    <body bgcolor='silver'>
+
+    <div class="content">
+
+      <h1><u>Welcome (UsersName)</u></h1>
+
+      <!-- <input type="button" id="addDB" value="Add Show/Movie" class="button"> -->
+      <!-- &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp -->
+      <pre>        <input type="submit" id="alreadySeen" value="Already seen Show(s)/Movie(s)" class="button"></pre>
+
+      <input type="submit" id="mustSee" value="Must see Show(s)/Movie(s)" class="button">
+      <input type="submit" id="wannaSee" value="Want to see Shows/Movies" class="button">
+
+      <div id="display"></div>
+
+      <br><br>
+
+      <pre>               <input class="button1" type="submit" id="logOff" value="Log Off"> </pre>
+
+    </div>
+
+    <script>
+      main();
+
+      function main(){
+        // document.getElementById("addDB").addEventListener("click", addDB);
+        document.getElementById("wannaSee").addEventListener("click", addDB);
+        document.getElementById("mustSee").addEventListener("click", mustSee);
+        document.getElementById("alreadySeen").addEventListener("click", alreadySeen);
+      }
+
+      function addDB(){
+        let str = "<br>";
+        //What do you wanna see, Already Seen, Must see
+
+        //Name, Poster, Summary, Genre, Year
+        str += "<div class='display'>";
+        str += "<br>&nbsp&nbspTitle of Show/Movie: <input type='text' id='title' placeholder='Thor Ragnorok'> <br><br>";
+        str += "&nbsp&nbspGenre: <select>";
+        str += "<option value='Comedy'>Comedy</option>";
+        str += "<option value='Horror'>Horror</option>";
+        str += "<option value='Action and Adventure'>Action and Adventure</option>";
+        str += "<option value='Romance'>Romance</option>";
+        str += "</select> <br><br>";
+        str += "&nbsp&nbspYear: <input type='number' id='yr' placeholder='2017' /> <br> <br>";
+        str += "&nbsp&nbspPoster: <input type='file' id='myFile'> <br><br>";
+        str += "&nbsp&nbspSummary: <textarea rows='5' cols='70' id='summary' placeholder='What was the movie about?'></textarea>";
+        str += "<div>";
+
+        document.getElementById('display').innerHTML = str;
+
+      }
+
+
+      function mustSee(){
+
+        str = "<br><br>";
+
+        str += "&nbsp&nbspWhat genre are you looking for: <select>";
+        str += "<option value='Comedy'>Comedy</option>";
+        str += "<option value='Horror'>Horror</option>";
+        str += "<option value='Action and Adventure'>Action and Adventure</option>";
+        str += "<option value='Romance'>Romance</option>";
+        str += "</select> <br><br>";
+
+        document.getElementById('display').innerHTML = str;
+      }
+
+      function alreadySeen(){
+        let sampleArr = ["Office", "Daredevil", "Supernatural", "Gotham", "New Girl", "Punisher"];
+        let sampleArr1 = ["2005", "2015", "2005", "2014", "2011", "2017"];
+        let sampleArr2 = ["Comedy","Action and Adventure", "Action and Adventure", "Action and Adventure", "Comedy", "Action and Adventure"];
+        let sampleArr3 = ["office.jpg","Daredevil.jpg","Supernatural.jpg","Gotham.jpg","NewGirl.jpg","Punisher.jpg"];
+
+
+          var tbl = "<br><br><table border='1'>";
+          tbl += "<tr><th>Title</th><th>Year</th><th>Genre</th><th>Poster</th>";
+          for (var i=0; i < 6 ; i++) {
+          //$tbl .= "<tr><td>{$sampleArr[$i]}</td></tr>";
+          tbl += "<tr><td><b>"+sampleArr[i]+"</b></td><td>"+sampleArr1[i]+"</td><td><i>"+sampleArr2[i]+"</i></td><td><img src='images/"+sampleArr3[i]+"' alt='tester' width='100' height='100'></td></tr>";
+
+          }
+
+
+          tbl += "</table>";
+
+          document.getElementById('display').innerHTML = tbl;
+        }
+
+
+    </script>
+  </body>
+</html>
